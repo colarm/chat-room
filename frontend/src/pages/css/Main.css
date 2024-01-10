@@ -1,0 +1,23 @@
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.split {
+    width: 16rem;
+    height: 1px;
+    background-color: #e3fae1;
+    margin: 0 0 2rem;
+}
+
+.ButtonGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.split_1 {
+    height: 1rem;
+}

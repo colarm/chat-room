@@ -1,9 +1,19 @@
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NotFound from './pages/NotFound';
+import Main from './pages/Main';
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Chat Room</h1>
+      <Router>
+        <Routes>
+          <Route path='/' Component={Main} />
+          <Route path='*' Component={NotFound} />
+        </Routes>
+      </Router>
     </div>
   );
 }

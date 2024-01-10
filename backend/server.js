@@ -2,16 +2,17 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 80;
+const chat = require('./src/chat/chat')
 
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.json()); // 中间件，用于解析JSON请求体
 
-// 静态文件服务
+app.use(chat);
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// 通配符路由
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
