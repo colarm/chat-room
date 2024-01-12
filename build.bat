@@ -1,3 +1,6 @@
+
+:: This .bat file could build the frontend, copy the export folder to backend, and run backend automaticly. 
+
 cd frontend
 call npm run build
 cd ../backend
