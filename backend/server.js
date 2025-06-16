@@ -1,25 +1,39 @@
-const express = require('express');
-const path = require('path');
+const https = require("https");
+const http = require("http");
+const fs = require("fs");
+const express = require("express");
+const path = require("path");
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 443;
 
-const chat = require('./src/chat/chat');
-const createUser = require('./src/createUser/createUser');
+app.use(express.static(path.join(__dirname, "build")));
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.use(express.json()); // 中间件，用于解析JSON请求体
+// 读取 Let’s Encrypt 证书
+const options = {
+  key: fs.readFileSync("/etc/letsencrypt/live/nanochat.cc/privkey.pem"),
+  cert: fs.readFileSync("/etc/letsencrypt/live/nanochat.cc/fullchain.pem"),
+};
 
-app.use(chat);
-app.use(createUser);
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// 静态文件服务
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// 通配符路由
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+// 创建 HTTP 服务器并重定向到 HTTPS
+http
+  .createServer((req, res) => {
+    res.writeHead(301, { Location: "https://" + req.headers.host + req.url });
+    res.end();
+  })
+  .listen(80, () => {
+    console.log("Redirecting HTTP to HTTPS...");
+  });
+
+https.createServer(options, app).listen(port, () => {
+  console.log("HTTPS Server running on port " + port);
 });
