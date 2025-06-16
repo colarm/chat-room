@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, sans-serif;
+  background: linear-gradient(135deg, #0e0f11, #1a1c1f);
+  color: #f0f0f0;
+  height: 100vh;
+}
+
+.Main {
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.6s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.Main:hover {
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+  transform: translateY(-4px) scale(1.01);
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: #dbe5ff;
+  font-weight: 700;
+}
+
+.split {
+  width: 100%;
+  height: 1px;
+  background-color: #333;
+  margin-bottom: 2rem;
+}
+
+.name {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transition: all 0.2s ease;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.name:focus {
+  border-color: #7b9fff;
+  box-shadow: 0 0 0 4px rgba(123, 159, 255, 0.1);
+  outline: none;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.ButtonGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 2rem;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: #7b9fff;
+  border: none;
+  border-radius: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  width: 100%;
+}
+
+button:hover {
+  background: #a1bfff;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
