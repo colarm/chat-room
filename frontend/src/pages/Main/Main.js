@@ -7,7 +7,13 @@ import { POST } from "../../function/POST";
 let language = navigator.language;
 
 const text = {
-  en: {
+  "en-US": {
+    title: "Chat Room",
+    start: "Start",
+    newChat: "Start a new chat",
+    continue: "Continue an existed chat",
+  },
+  "en-GB": {
     title: "Chat Room",
     start: "Start",
     newChat: "Start a new chat",
@@ -19,10 +25,16 @@ const text = {
     newChat: "开始新聊天",
     continue: "继续已有聊天",
   },
+  "zh-TW": {
+    title: "聊天室",
+    start: "開始",
+    newChat: "開始新聊天",
+    continue: "繼續已有聊天",
+  },
 };
 
 if (text[language] === undefined) {
-  language = "en";
+  language = "en-US";
 }
 
 function Main() {

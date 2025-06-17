@@ -7,16 +7,22 @@ import { POST } from "../../function/POST";
 let language = navigator.language;
 
 const text = {
-  en: {
+  "en-US": {
+    title: "Group",
+  },
+  "en-GB": {
     title: "Group",
   },
   "zh-CN": {
     title: "群组",
   },
+  "zh-TW": {
+    title: "群組",
+  },
 };
 
 if (text[language] === undefined) {
-  language = "en";
+  language = "en-US";
 }
 
 function Chat() {
